@@ -1,2 +1,2 @@
-# react-todolist-nojsx
+# todolist-react
 Created with CodeSandbox
