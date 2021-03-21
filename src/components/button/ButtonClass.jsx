@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import { useTheme } from "emotion-theming";
-
-import * as styles from "./button.styles";
+import { withTheme } from "emotion-theming";
 
 const StyledButton = styled.button`
   font-size: 1.8rem;
   font-family: "Bungee", sans-serif;
-  color: ${textColor};
+  color: ${(props) => props.textColor};
 
   /* width: 24%; */
   padding: 16px;
@@ -16,14 +14,34 @@ const StyledButton = styled.button`
   background: unset;
   border: unset;
   outline: unset;
-  text-align: ${align};
+  text-align: ${(props) => props.align};
 `;
 
 class Button extends React.Component {
   render() {
-    const { text, onClick, color, align } = this.props;
+    const { text, onClick, color, align, theme } = this.props;
+    const {
+      color: { primary }
+    } = theme;
+    let textColor;
 
-    return <StyledButton></StyledButton>;
+    switch (color) {
+      case "black":
+        textColor = primary.black;
+        break;
+      case "red":
+        textColor = primary.red;
+        break;
+      default:
+        textColor = primary.black;
+        break;
+    }
+
+    return (
+      <StyledButton textColor={textColor} align={align} onClick={onClick}>
+        {text}
+      </StyledButton>
+    );
   }
 
   static defaultProps = {
@@ -40,4 +58,4 @@ class Button extends React.Component {
   };
 }
 
-export default Button;
+export default withTheme(Button);
