@@ -16,7 +16,7 @@ const Todo = ({ text, completeTodo, index, isCompleted }) => {
   );
 };
 
-Todo.prooTypes = {
+Todo.propTypes = {
   text: PropTypes.string.isRequired,
   completeTodo: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,

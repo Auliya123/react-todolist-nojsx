@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import Todo from "../todo/Todo";
+import Todo from "../todo/TodoClass";
 import PropTypes from "prop-types";
 
 import Container from "../../layout/Container";
